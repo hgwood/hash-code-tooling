@@ -1,7 +1,8 @@
-const fs = require("fs");
+const _ = require("lodash/fp");
 const assert = require("assert");
 const debug = require("debug")("read");
-const _ = require("lodash/fp");
+const fs = require("fs");
+const jolicitron = require("jolicitron");
 
 module.exports = function read(filePath) {
   const cachedFile = `${filePath.split(".")[0]}.in.json`;
@@ -21,7 +22,13 @@ module.exports = function read(filePath) {
 };
 
 const parse = inputText => {
-  return {};
+  const parse = jolicitron((save, n) => [
+
+  ]);
+  const { parsedValue, remaining } = parse(inputText);
+  assert.equal(remaining.trim(), "");
+  debug("end");
+  return parsedValue;
 };
 
 const assertValid = _.tap(parserOutput => {});
