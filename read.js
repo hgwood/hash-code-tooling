@@ -20,39 +20,14 @@ module.exports = function read(filePath) {
   return require(`./${cachedFile}`);
 };
 
-const splitHeaderFromPizza = _.flow(
-  _.split("\n"),
-  _.map(_.trim),
-  _.filter(_.identity),
-  _.over([_.first, _.tail])
-);
+const parse = inputText => {
+  return {};
+};
 
-const parseHeader = _.flow(
-  _.split(" "),
-  _.map(Number),
-  _.zipObject(["nrows", "ncolumns", "minIngredients", "maxCells"])
-);
+const assertValid = _.tap(parserOutput => {});
 
-const parsePizza = _.map(_.toArray);
-
-const parseHeaderAndPizza = _.overArgs(
-  (header, pizza) => Object.assign({}, header, { pizza }),
-  [parseHeader, parsePizza]
-);
-
-const assertValid = _.tap(({ nrows, ncolumns, pizza }) => {
-  assert.equal(pizza.length, nrows, "number of rows is not consistent");
-  pizza.forEach(row => {
-    assert.equal(row.length, ncolumns, "number of columns is not consistent");
-    row.forEach(cell => {
-      assert(cell.match(/[MT]/), "neither mushroom not tomatoe??");
-    });
-  });
-});
-
-const parse = _.flow(
-  splitHeaderFromPizza,
-  _.spread(parseHeaderAndPizza),
+const parseAndValidate = _.flow(
+  parse,
   assertValid,
   _.tap(() => debug("parsing completed"))
 );

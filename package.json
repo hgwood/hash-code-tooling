@@ -18,31 +18,9 @@
     "input1": "cross-env npm start ${npm_package_config_input1_name}.in.txt",
     "input2": "cross-env npm start ${npm_package_config_input2_name}.in.txt",
     "input3": "cross-env npm start ${npm_package_config_input3_name}.in.txt",
-    "input4": "cross-env npm start ${npm_package_config_input4_name}.in.txt",
-    "viz": "node ./pizza-viz.js",
-    "viz1": "cross-env npm run viz ${npm_package_config_input1_name}.in.txt ${npm_package_config_input1_name}.out.txt",
-    "viz2": "cross-env npm run viz ${npm_package_config_input2_name}.in.txt ${npm_package_config_input2_name}.out.txt",
-    "viz3": "cross-env npm run viz ${npm_package_config_input3_name}.in.txt ${npm_package_config_input3_name}.out.txt",
-    "viz4": "cross-env npm run viz ${npm_package_config_input4_name}.in.txt ${npm_package_config_input4_name}.out.txt"
+    "input4": "cross-env npm start ${npm_package_config_input4_name}.in.txt"
   },
-  "config": {
-    "input1": {
-      "id": "5167684987650048",
-      "name": "1-example"
-    },
-    "input2": {
-      "id": "5739156827275264",
-      "name": "2-small"
-    },
-    "input3": {
-      "id": "5726181865291776",
-      "name": "3-medium"
-    },
-    "input4": {
-      "id": "5690701543112704",
-      "name": "4-big"
-    }
-  },
+  "config": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hgwood/hash-code-2018-training.git"

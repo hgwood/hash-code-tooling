@@ -11,12 +11,6 @@ function writeLines(path, lines) {
   debug(`wrote ${lines.length} lines to ${path}`);
 }
 
-const unparse = _.flow(
-  _.over([
-    _.flow(_.property("length"), _.toString),
-    _.map(({ r1, c1, r2, c2 }) => `${r1} ${c1} ${r2} ${c2}`)
-  ]),
-  _.flatten
-);
+const unparse = _.constant([]);
 
 module.exports.unparse = unparse;
