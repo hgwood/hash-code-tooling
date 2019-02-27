@@ -1,5 +1,5 @@
 {
-  "name": "hash-code-2018-training",
+  "name": "hash-code-2019-qualification",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -23,24 +23,25 @@
   "config": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hgwood/hash-code-2018-training.git"
+    "url": "git+https://github.com/hgwood/hash-code-2019-qualification.git"
   },
   "keywords": [
     "hash code",
     "google",
     "contest",
-    "2018"
+    "2019"
   ],
   "contributors": [
+    "Clément Fassot",
     "Thibaud Courtoison",
     "Julien Landuré",
     "Hugo Wood"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hgwood/hash-code-2018-training/issues"
+    "url": "https://github.com/hgwood/hash-code-2019-qualification/issues"
   },
-  "homepage": "https://github.com/hgwood/hash-code-2018-training#readme",
+  "homepage": "https://github.com/hgwood/hash-code-2019-qualification#readme",
   "engines": {
     "node": ">=8 <9"
   },
