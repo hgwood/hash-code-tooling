@@ -1,4 +1,4 @@
-# Hash Code 2018 Training
+# Hash Code 2019 Qualificiation
 
 Judge : https://hashcodejudge.withgoogle.com/#/home
 
