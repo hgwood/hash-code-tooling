@@ -53,28 +53,30 @@ const download = async () => {
     });
   }, packageJson.config);
   fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2));
-  debug(`written package.json`);
+  debug(`written 'package.json'`);
   const roundFile = "round.json";
   fs.writeFileSync(roundFile, JSON.stringify(activeRound, null, 2));
-  debug(`written ${roundFile}`);
+  debug(`written '${roundFile}'`);
   const statementFile = path.join(downloadDir, "statement.pdf");
   downloadProblemStatement(activeRound)
     .pipe(fs.createWriteStream(statementFile))
-    .on("close", () => debug(`written ${statementFile}`));
+    .on("error", err => debug(`error while writing '${statementFile}'`, err))
+    .on("close", () => debug(`written '${statementFile}'`));
   downloadInputs(activeRound).forEach(({ name, stream }) => {
     const sanitizedName = _.kebabCase(name);
     const inputFile = path.join(downloadDir, `${sanitizedName}.in.txt`);
     stream
       .pipe(fs.createWriteStream(inputFile))
-      .on("close", () => debug(`written ${inputFile}`));
+      .on("error", err => debug(`error while writing '${inputFile}'`, err))
+      .on("close", () => debug(`written '${inputFile}'`));
     const outputFile = path.join(downloadDir, `${sanitizedName}.out.txt`);
     fs.writeFile(outputFile, "", { flag: "wx" }, err => {
       if (err && err.code === "EEXIST") {
-        debug(`did not overwrite ${outputFile}`);
+        debug(`did not overwrite '${outputFile}'`);
       } else if (err) {
-        debug(`error while writing ${outputFile}`, err);
+        debug(`error while writing '${outputFile}'`, err);
       } else {
-        debug(`written ${outputFile}`);
+        debug(`written '${outputFile}'`);
       }
     });
   });
