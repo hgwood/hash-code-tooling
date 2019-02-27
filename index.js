@@ -19,6 +19,6 @@ if (_.isEmpty(files)) console.warn("No input files given.");
 
 _.each(files, function(file) {
   const problem = read(file);
-  const solution = solve(problem);
+  const solution = solve(problem, file);
   write(path.join(solutionDir, `${file.split(".")[0]}.out.txt`), solution);
 });
