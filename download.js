@@ -67,6 +67,16 @@ const download = async () => {
     stream
       .pipe(fs.createWriteStream(inputFile))
       .on("close", () => debug(`written ${inputFile}`));
+    const outputFile = path.join(downloadDir, `${sanitizedName}.out.txt`);
+    fs.writeFile(outputFile, "", { flag: "wx" }, err => {
+      if (err && err.code === "EEXIST") {
+        debug(`did not overwrite ${outputFile}`);
+      } else if (err) {
+        debug(`error while writing ${outputFile}`, err);
+      } else {
+        debug(`written ${outputFile}`);
+      }
+    });
   });
 };
 
