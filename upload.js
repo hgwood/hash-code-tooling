@@ -24,15 +24,18 @@ const solutionDir =
 const gitTagEnabled =
   process.env.TAG_ON_UPLOAD !== "false" ||
   process.env.npm_package_config_tagOnUpload !== "false";
-const authToken = process.env.HASH_CODE_JUDGE_AUTH_TOKEN;
-if (authToken) {
-  debug("token", shorten(authToken));
-} else {
-  console.error(
-    "HASH_CODE_JUDGE_AUTH_TOKEN not defined. Set it with your auth token to the Judge system."
-  );
-  process.exit();
-}
+const authToken = exec("sh gcloud-auth-token.sh")
+  .toString()
+  .trimRight();
+// const authToken = process.env.HASH_CODE_JUDGE_AUTH_TOKEN;
+// if (authToken) {
+//   debug("token", shorten(authToken));
+// } else {
+//   console.error(
+//     "HASH_CODE_JUDGE_AUTH_TOKEN not defined. Set it with your auth token to the Judge system."
+//   );
+//   process.exit();
+// }
 
 const createUrlUri =
   "https://hashcode-judge.appspot.com/api/judge/v1/upload/createUrl";

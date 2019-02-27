@@ -46,3 +46,6 @@ Environment vars
 /.env
 
 .idea
+
+# gcloud configuration
+.gcloud

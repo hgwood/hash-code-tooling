@@ -4,17 +4,22 @@ const fs = require("fs");
 const path = require("path");
 const request = require("request");
 const requestPromise = require("request-promise");
+const exec = require("child_process").execSync;
 const packageJson = require("./package.json");
 
 const downloadDir =
   process.env.DOWNLOAD_DIR || process.env.npm_package_config_downloadDir || "";
-const authToken = process.env.HASH_CODE_JUDGE_AUTH_TOKEN;
-if (!authToken) {
-  console.error(
-    "HASH_CODE_JUDGE_AUTH_TOKEN not defined. Set it with your auth token to the Judge system."
-  );
-  process.exit();
-}
+const authToken = exec("sh gcloud-auth-token.sh")
+  .toString()
+  .trimRight();
+// old method with the env var
+// const authToken = process.env.HASH_CODE_JUDGE_AUTH_TOKEN;
+// if (!authToken) {
+//   console.error(
+//     "HASH_CODE_JUDGE_AUTH_TOKEN not defined. Set it with your auth token to the Judge system."
+//   );
+//   process.exit();
+// }
 const authHeader = { Authorization: `Bearer ${authToken}` };
 
 const downloadBlob = blobKey => {
