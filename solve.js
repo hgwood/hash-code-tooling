@@ -2,7 +2,8 @@ const debug = require("debug")("solve");
 const _ = require("lodash");
 const gridUtils = require("./grid-utils");
 
-function solve(problem) { // destructure this!
+function solve(problem) {
+  // destructure this!
   return [];
 }
 
