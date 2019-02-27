@@ -99,9 +99,7 @@ function* submitSolution(solution) {
     .map(({ score }) => parseInt(score))
     .reduce(_.add);
   debug(`got overall score: ${overallScore}`);
-  debug(`tagging`);
-
-  return overallScore;
+  return scoredSubmissions;
 }
 
 function* upload(filePath) {
@@ -170,6 +168,17 @@ function shorten(str) {
   );
 }
 
+function createGitTag(submissions) {
+  const tagScores = _(submissions)
+    .map(({ score }, dataSetKey) => `${dataSetKey}=${score}`)
+    .join("_");
+  const tagName = `${tagScores}_time=${Date.now()}`;
+  debug(`tagging as '${tagName}'`);
+  exec(`git tag ${tagName}`, {
+    encoding: "utf8"
+  });
+}
+
 if (module === require.main) {
   if (_.isEmpty(dataSets)) {
     console.log(
@@ -193,11 +202,9 @@ if (module === require.main) {
   debug("files to upload", solution);
   co(submitSolution(solution))
     .catch(explode)
-    .then(score => {
+    .then(submissions => {
       if (gitTagEnabled) {
-        exec(`git tag score=${score}`, {
-          encoding: "utf8"
-        });
+        createGitTag(submissions);
       }
     });
 }
