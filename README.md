@@ -56,4 +56,17 @@ Les variables d'environnement peuvent être renseignée dans un fichier [`.env`]
   * Permet de perdre moins de temps en debug
 * Faire des tests très simples pour ne pas perdre de temps en debug
 * Utiliser `assert` pour vérifier que tout va bien au milieu des fonctions et ne pas perdre de temps en debug
-* Utiliser `debug` en dernier recours (i.e. préfére tests et assertions) pour afficher des valeurs
+* Utiliser `debug` en dernier recours (i.e. préférer tests et assertions) pour afficher des valeurs
+
+## Analyse des jeux de données avec SQL
+
+* Lancer une base de données PostgreSQL avec `npm run pg:run`
+* Dans `pg-load.js`, implémenter la fonction `insertDataSet` qui insère un jeu de données en base
+* Exécuter `pg-load.js *.in.json` qui va créer une base de données par jeu de données
+* Lancer `npm run pg:psql` pour avoir une REPL SQL pour explorer les jeux de données
+  * `\l` pour lister les bases de données (jeux de données)
+  * `\c <database>` pour changer de base de données (jeux de données)
+  * `\dt` pour lister les tables
+  * `\d <table>` pour décrire une table
+  * `\q` pour quitter
+* `npm run pg:stop` et `npm run pg:rm` sont aussi disponibles pour arrêter et supprimer le conteneur Postgres respectivement
