@@ -10,7 +10,13 @@ module.exports = function read(filePath) {
     fs.accessSync(cachedFile);
     debug(`using cached ${cachedFile}`);
   } catch (err) {
-    debug(`not using cached input file because:`, err);
+    if (err.code === "ENOENT") {
+      debug(
+        `not using cached input file because it does not exist at: ${cachedFile}`
+      );
+    } else {
+      debug(`not using cached input file because:`, err);
+    }
     const textFromInputFile = fs.readFileSync(filePath, "utf8");
     debug(`read ${textFromInputFile.length} chars from ${filePath}`);
     const result = module.exports.parse(textFromInputFile);
