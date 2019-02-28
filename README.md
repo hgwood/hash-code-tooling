@@ -5,7 +5,7 @@ Judge : https://hashcodejudge.withgoogle.com/#/home
 ## Scripts
 
 * Lancer une résolution sur tous les fichiers d'entrée, en parallèle : `npm run all`
-* Lancer une résolution sur un fichier d'entrée : `npm run input<1|2|3|4>`
+* Lancer une résolution sur un fichier d'entrée : `npm run input:1`, `npm run input:2`, ...
 * Tests : `npm test`
 * Commit, zip, soumission au juge puis tag avec le score reçu : `npm run submit`
 * Génère une nouvelle fonction avec son test : `npm run scaffold <functionName>`
@@ -44,7 +44,7 @@ Les variables d'environnement peuvent être renseignée dans un fichier [`.env`]
 
 ## Checklist de début de challenge
 
-* Lancer `npm run init` (ce script télécharge énoncé et fichiers d'entrée, remplit la section `config` du `package.json` utilisé par les autres scripts, et crée des fichiers de sortie vide)
+* Lancer `npm run init` (ce script télécharge énoncé et fichiers d'entrée, remplit les sections `config` et `scripts` du `package.json` utilisé par les autres scripts, commit le tout, et enfin crée des fichiers de sortie vide)
 
 ## Conseils
 
