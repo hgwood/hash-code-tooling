@@ -8,29 +8,21 @@
     "lint": "eslint *.js",
     "prettier": "prettier --write \"*.js\"",
     "test": "mocha *.test.js",
-    "init": "npm run download && git add *.pdf *.in.txt round.json package.json && git commit -m \":bento: add statement and input files\"",
+    "init":
+      "npm run download && git add *.pdf *.in.txt round.json package.json && git commit -m \":bento: add statement and input files\"",
     "download": "cross-env DEBUG=* node -r dotenv/config ./download",
     "upload": "cross-env DEBUG=* node -r dotenv/config ./upload",
     "zip": "cross-env DEBUG=* node -r dotenv/config ./zip",
     "scaffold": "node scaffold",
     "submit": "npm run zip && npm run upload",
-    "all": "run-p input1 input2 input3 input4",
-    "input1": "cross-env npm start ${npm_package_config_input1_name}.in.txt",
-    "input2": "cross-env npm start ${npm_package_config_input2_name}.in.txt",
-    "input3": "cross-env npm start ${npm_package_config_input3_name}.in.txt",
-    "input4": "cross-env npm start ${npm_package_config_input4_name}.in.txt"
+    "all": "echo run 'npm run init' to generate this script"
   },
   "config": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hgwood/hash-code-2019-qualification.git"
   },
-  "keywords": [
-    "hash code",
-    "google",
-    "contest",
-    "2019"
-  ],
+  "keywords": ["hash code", "google", "contest", "2019"],
   "contributors": [
     "Clément Fassot",
     "Thibaud Courtoison",
