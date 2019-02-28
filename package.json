@@ -15,7 +15,9 @@
     "zip": "cross-env DEBUG=* node -r dotenv/config ./zip",
     "scaffold": "node scaffold",
     "submit": "npm run zip && npm run upload",
-    "all": "echo run 'npm run init' to generate this script"
+    "all":
+      "cross-env DEBUG_COLORS=1 run-p --aggregate-output --continue-on-error --print-label --silent input:*",
+    "input:none": "echo run 'npm run init' to generate scripts"
   },
   "config": {},
   "repository": {

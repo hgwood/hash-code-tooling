@@ -55,7 +55,8 @@ const download = async () => {
   const activeDataSets = activeRound.dataSets.map(({ id, name }, i) => ({
     id,
     name: _.kebabCase(name),
-    ordinalName: `input${i + 1}`
+    ordinalName: `input${i + 1}`,
+    scriptName: `input:${i + 1}`
   }));
   packageJson.config = activeDataSets.reduce(
     (config, { id, name, ordinalName }) => ({
@@ -65,14 +66,13 @@ const download = async () => {
     packageJson.config
   );
   packageJson.scripts = activeDataSets.reduce(
-    (scripts, { name, ordinalName }) => ({
+    (scripts, { name, scriptName }) => ({
       ...scripts,
-      [ordinalName]: `cross-env npm start ${name}.in.txt`
+      [scriptName]: `cross-env npm start ${name}.in.txt`
     }),
     packageJson.scripts
   );
-  packageJson.scripts.all =
-    "run-p " + activeDataSets.map(({ ordinalName }) => ordinalName).join(" ");
+  delete packageJson.scripts["input:none"];
   fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2));
   debug(`written 'package.json'`);
   const roundFile = "round.json";
