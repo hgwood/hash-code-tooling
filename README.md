@@ -6,8 +6,8 @@ Judge : https://hashcodejudge.withgoogle.com/#/home
 
 * Lancer une résolution sur tous les fichiers d'entrée, en parallèle : `npm run all`
 * Lancer une résolution sur un fichier d'entrée : `npm run input<1|2|3|4>`
-* Tests : `npm run test`
-* Commit, zip, et soumission au juge : `npm run submit` (tip: tagguer le commit avec le score une fois ce dernier connu : `git tag score=<score> <sha1>`)
+* Tests : `npm test`
+* Commit, zip, soumission au juge puis tag avec le score reçu : `npm run submit`
 * Génère une nouvelle fonction avec son test : `npm run scaffold <functionName>`
 
 ## Fonctions utilitaires
