@@ -52,11 +52,13 @@ const downloadInputs = round => {
 const download = async () => {
   const roundsInfo = await downloadRoundsInfo();
   const activeRound = roundsInfo.items.filter(round => round.active)[0];
-  packageJson.config = activeRound.dataSets.reduce((config, dataSet, i) => {
-    return Object.assign(config, {
+  packageJson.config = activeRound.dataSets.reduce(
+    (config, dataSet, i) => ({
+      ...config,
       [`input${i + 1}`]: { id: dataSet.id, name: _.kebabCase(dataSet.name) }
-    });
-  }, packageJson.config);
+    }),
+    packageJson.config
+  );
   fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2));
   debug(`written 'package.json'`);
   const roundFile = "round.json";
