@@ -1,4 +1,4 @@
-# Hash Code 2019 Qualificiation
+# Hash Code Tooling
 
 Judge : https://hashcodejudge.withgoogle.com/#/home
 
