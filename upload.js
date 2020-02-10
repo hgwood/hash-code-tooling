@@ -42,7 +42,7 @@ const createUrlUri =
 const submissionsUri =
   "https://hashcode-judge.appspot.com/api/judge/v1/submissions";
 const authorizationHeader = { Authorization: `Bearer ${authToken}` };
-const dataSets = _.range(4).reduce((dataSets, i) => {
+const dataSets = _.range(5).reduce((dataSets, i) => {
   const name = process.env[`npm_package_config_input${i + 1}_name`];
   if (!name) return dataSets;
   debug(`found data set '${name}' in package.json`);
