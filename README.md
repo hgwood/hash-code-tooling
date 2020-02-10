@@ -40,6 +40,7 @@ Les variables d'environnement peuvent être renseignée dans un fichier [`.env`]
 
 ## Préparation juste avant le challenge
 
+- Forker et cloner ce repo
 - Exécuter `sh ./gcloud-auth-init.sh` et suivre les instructions pour se connecter au compte Google du Hash Code.
 - Exécuter `npm ci`
 
