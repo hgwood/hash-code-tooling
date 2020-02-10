@@ -16,6 +16,8 @@ const joi = require("joi");
 const request = require("request-promise");
 const exec = require("child_process").execSync;
 const round = require("./round.json");
+const package = require("./package.json");
+const nbFiles = Object.keys(package.config).length;
 
 const buildDir =
   process.env.BUILD_DIR || process.env.npm_package_config_buildDir || ".builds";
@@ -42,7 +44,7 @@ const createUrlUri =
 const submissionsUri =
   "https://hashcode-judge.appspot.com/api/judge/v1/submissions";
 const authorizationHeader = { Authorization: `Bearer ${authToken}` };
-const dataSets = _.range(5).reduce((dataSets, i) => {
+const dataSets = _.range(nbFiles).reduce((dataSets, i) => {
   const name = process.env[`npm_package_config_input${i + 1}_name`];
   if (!name) return dataSets;
   debug(`found data set '${name}' in package.json`);
